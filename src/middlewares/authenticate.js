@@ -11,7 +11,7 @@ function authenticate(req, res, next) {
 		req.user = decoded.user;
 		next();
 	} catch (err) {
-		return res.status(401).json({ message: 'Token is not valid' });
+		return res.status(401).json({ message: 'Authentication token expired.' });
 	}
 }
 

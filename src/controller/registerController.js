@@ -16,20 +16,17 @@ const register = async (req, res) => {
 		user.password = await bcrypt.hash(password, salt);
 		await user.save();
 
-		// Create and sign JWT
-		const payload = {
-			user: {
-				id: user.id,
-			},
-		};
+		const id = user._id;
 
+		// Create and sign JWT
+		const payload = { user: { id } };
 		jwt.sign(
 			payload,
 			process.env.JWT_SECRET,
 			{ expiresIn: '1d' },
 			(err, token) => {
 				if (err) throw err;
-				res.json({ token });
+				return res.json({ token, user: id });
 			}
 		);
 	} catch (err) {
