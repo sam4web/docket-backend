@@ -13,6 +13,7 @@ const PORT = process.env.APP_PORT || 3000;
 
 const indexRouter = require('./routes/indexRoute');
 const authRouter = require('./routes/authRoute');
+const noteRoute = require('./routes/noteRoute');
 
 const errorHandler = require('./middlewares/errorHandler');
 
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
 app.use('/api', authRouter);
+app.use('/api/note', noteRoute);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
