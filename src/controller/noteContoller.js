@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Note = require('../models/note');
+const Note = require('../models/Note');
 
 // GET all notes
 const getNotes = async (req, res) => {
@@ -33,13 +33,13 @@ const getNote = async (req, res) => {
 
 // CREATE new note
 const createNote = async (req, res) => {
-	const { title, body } = req.body;
+	const { title, body, style } = req.body;
 
 	if (!title.trim())
 		return res.status(400).send({ message: 'Title field cannot be empty.' });
 
 	try {
-		const note = await Note.create({ title, body });
+		const note = await Note.create({ title, body, style });
 		return res.status(200).json(note);
 	} catch (err) {
 		return res.status(400).send({ message: err.message });
