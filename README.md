@@ -1,6 +1,6 @@
 # Docket Backend
 
-Docket is a note-taking application that allows users to create, read, update, and delete notes with authentication. This repository contains the frontend code built using modern web technologies.
+A robust RESTful API developed with Node.js and Express.js that provides comprehensive functionalities for managing notes. It includes user authentication with JSON Web Tokens (JWT) for secure login and registration, and utilizes MongoDB for reliable data storage and retrieval. This backend service supports CRUD operations for notes and ensures data integrity and security.
 
 
 ## Table of Contents
