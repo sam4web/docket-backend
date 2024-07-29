@@ -51,7 +51,7 @@ const createNote = async (req, res) => {
 			style,
 			author_id: req.user.id,
 		});
-		return res.status(200).json(note);
+		return res.status(201);
 	} catch (error) {
 		return res.status(400).send({ message: error.message });
 	}
