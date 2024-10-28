@@ -10,8 +10,8 @@ const connectDB = require("./config/connectDB");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const errorHandler = require("./middlewares/errorHandler");
-const { logger } = require("./middlewares/logger");
+const { errorHandler } = require("./middlewares/error-handler.middleware");
+const { logger } = require("./middlewares/logger.middleware.js");
 
 // connect to MongoDB
 connectDB();
@@ -23,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/", require("./routes/index.route"));
+app.use("/notes", require("./routes/note.route"));
 
 // catch 404 and forward to error handler
 app.all("*", (req, res) => {
