@@ -1,7 +1,6 @@
 const Note = require("../models/note.model");
 const { isValidObjectId } = require("mongoose");
 
-
 // @route /notes
 // @method GET
 const getAllNotes = async (req, res) => {
@@ -10,16 +9,16 @@ const getAllNotes = async (req, res) => {
   res.json(notes);
 };
 
-
 // @route /notes
 // @method POST
 const createNewNote = async (req, res) => {
-  let { title, body } = req.body;
+  let { title, body, color } = req.body;
   title = title?.trim();
   body = body?.trim();
+  color = color?.trim().toLowerCase();
   // check if title is provided
   if (!title) return res.status(400).json({ message: "Title is required" });
-  await Note.create({ title, body });
+  await Note.create({ title, body, color });
   res.json({ message: `Note with title ${title} created` });
 };
 

@@ -10,6 +10,10 @@ const noteSchema = new Schema({
     type: String,
     default: "",
   },
+  color: {
+    type: String,
+    default: "#8d99ae",
+  },
   // author: { type: Schema.Types.ObjectId, ref: "User" },
 }, {
   timestamps: true,
