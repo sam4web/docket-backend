@@ -5,9 +5,10 @@ const { isValidObjectId } = require("mongoose");
 // @method GET
 const getAllNotes = async (req, res) => {
   const notes = await Note.find({}).select("-__v");
-  if (!notes.length) return res.status(404).json({ message: "No notes found" });
+  if (!notes.length) return res.status(204).json({ message: "No notes found" });
   res.json(notes);
 };
+
 
 // @route /notes
 // @method POST
@@ -48,11 +49,11 @@ const updateNote = async (req, res) => {
   body = body?.trim();
   // check if title is provided
   if (!title) return res.status(400).json({ message: "Title is required" });
-
   const note = await Note.findByIdAndUpdate(id, { title, body }).lean();
   // check if note exists
   if (!note) return res.status(404).json({ message: "Note not found" });
-  res.json({ message: `Note with title ${title} updated` });
+  const updatedNote = await Note.findById(id).lean()
+  res.json(updatedNote);
 };
 
 
