@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 const { errorHandler } = require("./middlewares/error-handler.middleware");
 const { logger } = require("./middlewares/logger.middleware.js");
+const path = require("node:path");
 
 // connect to MongoDB
 connectDB();
@@ -22,12 +23,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+app.use("/", express.static(path.join(__dirname, "public")));
+
 app.use("/", require("./routes/index.route"));
 app.use("/notes", require("./routes/note.route"));
 
 // catch 404 and forward to error handler
 app.all("*", (req, res) => {
-  return res.status(404).json({ message: "404 Not Found" });
+  res.status(404);
+  if (req.accepts("html")) return res.render("not-found");
+  else if (req.accepts("json")) return res.json({ message: "Resource not found" });
+  else return res.type("text").send("Resource not found. Please check the URL.");
 });
 
 
