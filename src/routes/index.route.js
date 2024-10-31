@@ -11,5 +11,4 @@ router.get(["/", "/index", "/index.html"], (req, res) => {
     return res.type("text").send("Welcome to the Docket API! Manage your personal notes.");
 });
 
-
 module.exports = router;
