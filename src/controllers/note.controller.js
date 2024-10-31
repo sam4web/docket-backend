@@ -20,7 +20,7 @@ const createNewNote = async (req, res) => {
   // check if title is provided
   if (!title) return res.status(400).json({ message: "Title is required" });
   const note = await Note.create({ title, body, color });
-  res.json(note)
+  res.json(note);
 };
 
 
@@ -52,7 +52,7 @@ const updateNote = async (req, res) => {
   const note = await Note.findByIdAndUpdate(id, { title, body }).lean();
   // check if note exists
   if (!note) return res.status(404).json({ message: "Note not found" });
-  const updatedNote = await Note.findById(id).lean()
+  const updatedNote = await Note.findById(id).lean();
   res.json(updatedNote);
 };
 
@@ -68,7 +68,6 @@ const deleteNote = async (req, res) => {
   if (!note) return res.status(404).json({ message: "Note not found" });
   res.sendStatus(204);
 };
-
 
 module.exports = {
   getAllNotes,

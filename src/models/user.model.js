@@ -16,7 +16,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-});
+}, { timestamps: true });
 
 // middleware to hash password before saving
 userSchema.pre("save", async function(next) {
@@ -27,7 +27,7 @@ userSchema.pre("save", async function(next) {
 });
 
 // method to check if the passed password is correct
-userSchema.methods.isPasswordCorrect = async function(password) {
+userSchema.methods.doesPasswordMatch = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
 
@@ -35,7 +35,7 @@ userSchema.methods.isPasswordCorrect = async function(password) {
 userSchema.methods.generateAccessToken = async function() {
   return jwt.sign(
     {
-      UserData: {
+      UserInfo: {
         username: this.username,
         email: this.email,
       },
@@ -48,10 +48,9 @@ userSchema.methods.generateAccessToken = async function() {
 // method to generate refresh token
 userSchema.methods.generateRefreshToken = async function() {
   return jwt.sign(
-    { data: this.username },
+    { id: this._id },
     process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: "10d" });
-
+    { expiresIn: "5d" });
 };
 
 module.exports = mongoose.model("User", userSchema);
