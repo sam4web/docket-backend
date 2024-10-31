@@ -19,8 +19,8 @@ const createNewNote = async (req, res) => {
   color = color?.trim().toLowerCase();
   // check if title is provided
   if (!title) return res.status(400).json({ message: "Title is required" });
-  await Note.create({ title, body, color });
-  res.json({ message: `Note with title ${title} created` });
+  const note = await Note.create({ title, body, color });
+  res.json(note)
 };
 
 
