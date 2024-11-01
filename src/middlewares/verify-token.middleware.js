@@ -3,7 +3,7 @@ const User = require("../models/user.model");
 
 const verifyTokenMiddleware = async (req, res, next) => {
   const authToken = req.headers["authorization" || "Authorization"];
-  if (!authToken || !authToken.includes("Bearer ")) res.status(401).send("Unauthorized");
+  if (!authToken || !authToken?.includes("Bearer ")) return res.status(401).json({ message: "Unauthorized" });
   const token = authToken.replace("Bearer ", "");
 
   try {

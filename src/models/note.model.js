@@ -14,7 +14,7 @@ const noteSchema = new Schema({
     type: String,
     default: "#8d99ae",
   },
-  // author: { type: Schema.Types.ObjectId, ref: "User" },
+  author: { type: Schema.Types.ObjectId, ref: "User" },
 }, {
   timestamps: true,
 });

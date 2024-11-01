@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const note = require("../controllers/note.controller");
+const { verifyToken } = require("../middlewares/verify-token.middleware");
+
+router.use(verifyToken);
 
 router.route("/")
   .get(note.getAllNotes)
