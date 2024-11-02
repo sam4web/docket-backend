@@ -39,6 +39,7 @@ userSchema.methods.generateAccessToken = async function() {
         id: this._id,
         username: this.username,
         email: this.email,
+        createdAt: this.createdAt
       },
     },
     process.env.ACCESS_TOKEN_SECRET,

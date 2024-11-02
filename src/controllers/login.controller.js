@@ -17,7 +17,7 @@ const loginController = async (req, res) => {
   try {
     // check if user exists
     const foundUser = await User.findOne({ email });
-    if (!foundUser) return res.status(400).json({ message: "User does not exists." });
+    if (!foundUser) return res.status(400).json({ message: "User with this email does not exists." });
 
     // check if password matches
     const passMatch = await foundUser.doesPasswordMatch(password);
