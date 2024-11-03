@@ -1,9 +1,8 @@
-const { jwt } = require("jsonwebtoken");
+const { validateEmail, validatePassword } = require("../utils/validate-credentials.util");
+const User = require("../models/user.model");
 
 // @route /auth/login
 // @method POST
-const { validateEmail, validatePassword } = require("../utils/validate-credentials.util");
-const User = require("../models/user.model");
 const loginController = async (req, res) => {
   let { email, password } = req.body;
   email = email?.trim();
