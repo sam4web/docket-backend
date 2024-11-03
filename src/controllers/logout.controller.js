@@ -5,7 +5,10 @@ const User = require("../models/user.model");
 // @route /auth/logout
 // @method POST
 const logoutController = async (req, res) => {
-  res.clearCookie("refreshToken");
+  res.clearCookie("refreshToken", {
+    sameSite: "None",
+    secure: process.env.NODE_ENV !== "development",
+  });
   res.end();
 };
 
