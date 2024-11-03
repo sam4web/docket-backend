@@ -31,7 +31,7 @@ const loginController = async (req, res) => {
       {
         httpOnly: true,
         maxAge: 5 * 24 * 60 * 60 * 1000,
-        sameSite: false,
+        sameSite: "None",
         secure: process.env.NODE_ENV !== "development",
       });
 
