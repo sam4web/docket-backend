@@ -35,7 +35,7 @@ const registerContoller = async (req, res) => {
       {
         httpOnly: true,
         maxAge: 5 * 24 * 60 * 60 * 1000,
-        sameSite: "None",
+        sameSite: process.env.NODE_ENV === "development" ? "Strict" : "None",
         secure: process.env.NODE_ENV !== "development",
       });
 

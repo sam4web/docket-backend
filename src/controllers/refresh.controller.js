@@ -23,10 +23,9 @@ const refreshController = async (req, res) => {
       {
         httpOnly: true,
         maxAge: 5 * 24 * 60 * 60 * 1000,
-        sameSite: "None",
+        sameSite: process.env.NODE_ENV === "development" ? "Strict" : "None",
         secure: process.env.NODE_ENV !== "development",
       });
-
     return res.status(200).json(accessToken);
   } catch (err) {
     return res.status(400).json({ message: `${err.name}: ${err.message}` });

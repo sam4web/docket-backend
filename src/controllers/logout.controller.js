@@ -6,7 +6,7 @@ const User = require("../models/user.model");
 // @method POST
 const logoutController = async (req, res) => {
   res.clearCookie("refreshToken", {
-    sameSite: "None",
+    sameSite: process.env.NODE_ENV === "development" ? "Strict" : "None",
     secure: process.env.NODE_ENV !== "development",
   });
   res.end();
