@@ -26,15 +26,11 @@ for notes while maintaining data integrity and security.
 
 ## Technologies Used
 
-- **[Node.js](https://nodejs.org/)**: A JavaScript runtime environment that allows server-side code execution.
-- **[Express.js](https://expressjs.com/)**: A minimalist web framework for Node.js, used to handle API routing and HTTP
-  requests.
-- **[MongoDB](https://www.mongodb.com/)**: A NoSQL database for storing application data in a scalable and flexible
-  format.
-- **[Mongoose](https://mongoosejs.com/)**: An Object Data Modeling (ODM) library for MongoDB and Node.js, facilitating
-  schema-based data interactions.
-- **[JWT (JSON Web Tokens)](https://jwt.io/)**: A compact, URL-safe token used for securely transmitting information
-  between parties, employed here for user authentication.
+- **[Node.js](https://nodejs.org/)**: JavaScript runtime for server-side code.
+- **[Express.js](https://expressjs.com/)**: Web framework for API routing and HTTP requests.
+- **[MongoDB](https://www.mongodb.com/)**: NoSQL database for scalable, flexible data storage.
+- **[Mongoose](https://mongoosejs.com/)**: ODM for schema-based MongoDB interactions.
+- **[JWT (JSON Web Tokens)](https://jwt.io/)**: Secure, URL-safe token for user authentication.
 
 ## Endpoints
 
